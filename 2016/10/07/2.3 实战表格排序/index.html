@@ -1,0 +1,921 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javaScript,js入门," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://p1.bpimg.com/567571/b01abce46db6f4bc.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="知识点
+git问题，如果遇到自己修改了git clone 下来的文件，导致再次跟新跟新不了的情况下，可以使用强制跟新git reset --hard  git pull origin master
+数据库中，只有两个值的时候，就是0和1，比如说性别，男1，女0
+有变量惨进来的属性名，必须要用中括号
+去掉table上的小白线：cellpadding=&amp;quot;0&amp;quot;  cellspacin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.3 小练习产品排序、表格排序">
+<meta property="og:url" content="http://yoursite.com/2016/10/07/2.3 实战表格排序/index.html">
+<meta property="og:site_name" content="长白小蒙">
+<meta property="og:description" content="知识点
+git问题，如果遇到自己修改了git clone 下来的文件，导致再次跟新跟新不了的情况下，可以使用强制跟新git reset --hard  git pull origin master
+数据库中，只有两个值的时候，就是0和1，比如说性别，男1，女0
+有变量惨进来的属性名，必须要用中括号
+去掉table上的小白线：cellpadding=&amp;quot;0&amp;quot;  cellspacin">
+<meta property="og:updated_time" content="2017-05-15T15:48:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2.3 小练习产品排序、表格排序">
+<meta name="twitter:description" content="知识点
+git问题，如果遇到自己修改了git clone 下来的文件，导致再次跟新跟新不了的情况下，可以使用强制跟新git reset --hard  git pull origin master
+数据库中，只有两个值的时候，就是0和1，比如说性别，男1，女0
+有变量惨进来的属性名，必须要用中括号
+去掉table上的小白线：cellpadding=&amp;quot;0&amp;quot;  cellspacin">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/07/2.3 实战表格排序/"/>
+
+
+
+
+
+  <title> 2.3 小练习产品排序、表格排序 | 长白小蒙 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f18e399141f4b0b08f3dfbe6d7bb305a";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">长白小蒙</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/resume" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-text"></i> <br />
+            
+            简历
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iydvVsUw37-P7nQ_DTcf','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/07/2.3 实战表格排序/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Monty Yuan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="长白小蒙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="长白小蒙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                2.3 小练习产品排序、表格排序
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-07T00:00:00+08:00">
+                2016-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ol>
+<li>git问题，如果遇到自己修改了git clone 下来的文件，导致再次跟新跟新不了的情况下，可以使用强制跟新<code>git reset --hard</code>  <code>git pull origin master</code></li>
+<li>数据库中，只有两个值的时候，就是0和1，比如说性别，男1，女0</li>
+<li>有变量惨进来的属性名，必须要用中括号</li>
+<li>去掉table上的小白线：<code>cellpadding=&quot;0&quot;</code>  <code>cellspacing=&quot;0&quot;</code></li>
+<li>1是升序 -1是降序，让sort排序里的值乘以-1，就可以重新排列</li>
+<li><code>-webkit-user-select: none;</code>点击的时候，文字不被选中，css样式</li>
+</ol>
+<h3 id="京东的产品排序"><a href="#京东的产品排序" class="headerlink" title="京东的产品排序"></a>京东的产品排序</h3><ol>
+<li>先将html和css在页面中写了</li>
+<li>开始写js—创建一个文件夹js—然后创建一个js文件—在html中src引用js文件，开始<strong>写js文件：</strong></li>
+<li>首先先获取<strong>要操作的元素</strong>利用ID 、Tagname、Classname</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//先获取最外层的id ，其他的都是它里面的内容</span></div><div class="line"><span class="keyword">var</span> product = <span class="built_in">document</span>.getElementById(<span class="string">'product'</span>);</div><div class="line"><span class="keyword">var</span> btn = product.getElementsByTagName(<span class="string">'a'</span>);<span class="comment">//包含价格和成交量的按钮</span></div><div class="line"><span class="keyword">var</span> ul = product.getElementsByTagName(<span class="string">'ul'</span>)[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> lis = ul.getElementsByTagName(<span class="string">'li'</span>);</div></pre></td></tr></table></figure>
+<ol>
+<li>（<strong>ajax</strong>）接下来需要获取后台的数据，再把获取到的数据添加到页面中<ol>
+<li><code>new XMLHttpRequest( )</code>创建一个异步对象（到后台拿数据）</li>
+<li><code>xhr.open(get/post,url,true/false)</code>打开一个描述</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>get/post : 请求方式</li>
+<li>url : 接口  (后台提供)</li>
+<li>true/false : 同步/异步  同步原地死等  异步多任务<ol>
+<li><code>xhr.onreadystatechange = function</code>  当readystate状态改变触发函数</li>
+<li><code>if(xhr.readyState == 4 &amp;&amp; xhr.status == 200){</code>判断条件</li>
+</ol>
+</li>
+<li>xhr.readyState == 4  代表xhr回来了</li>
+<li>xhr.status == 200    代表成功获取到数据</li>
+<li><code>date = JSON.parse(xhr.responseText)</code>    这个属性保存着从接口获取回来的数据<ol>
+<li><code>xhr.send(null)</code>发送执行</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li><p>因为没有后台数据，现在我们需要<strong>mock</strong> 一个数据，简单说是自己造一个假数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[</div><div class="line">    &#123;&quot;src&quot; : &quot;images/phone9.jpg&quot;,  &quot;price&quot; : 199, &quot;comment&quot; : 10089 &#125;</div><div class="line">]//这个是data.txt文件中的数据，数据会根据不用的网页需求，制作不同类型的数据</div></pre></td></tr></table></figure>
+</li>
+<li><p>将获取到的数据添加到页面中 ==》 1. 动态添加    2. <strong>innerHTML的方式添加</strong></p>
+<pre><code>1. 动态添加方法：
+    2. appendChild （）`appendchild（动态添加）`的方式不会影响元素的任何属性，曾经绑定过的方法现在还存在
+    3.  innerBefore（）
+</code></pre></li>
+</ol>
+<p><strong>采用innerHTML的方式将从数据库中获取的数据添加到页面中</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">;(<span class="function"><span class="keyword">function</span> <span class="title">bindData</span>(<span class="params"></span>)</span>&#123;<span class="comment">//自执行函数</span></div><div class="line">    <span class="keyword">if</span>(data &amp;&amp; data.length)&#123; <span class="comment">// 如果data存在并且data.length也存在 if判断真假</span></div><div class="line">        <span class="keyword">var</span> str = <span class="string">''</span>;<span class="comment">//添加一个空字符串</span></div><div class="line">           <span class="comment">// data : [&#123;src : "images/phone1.jpg", price : 8888, comment : 23  &#125;...]  自己moke的数据</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; data.length; i++)&#123; <span class="comment">//便利数据中的每一项</span></div><div class="line">            <span class="keyword">var</span> curData = data[i]; <span class="comment">// 每次循环的当前对象</span></div><div class="line">            str += <span class="string">'&lt;li price="'</span> + data[i].price + <span class="string">'" ok="'</span> + data[i].ok + <span class="string">'"&gt;'</span>;</div><div class="line">            str += <span class="string">'&lt;div&gt;&lt;img src="'</span>+ curData.src +<span class="string">'" &gt;&lt;/div&gt;'</span>;<span class="comment">//只是将自己的数据引用到字符串的变量中curDate.src再字符串拼接</span></div><div class="line">            str += <span class="string">'&lt;p class="price"&gt;&lt;i&gt;￥&lt;/i&gt;'</span>+ curData[<span class="string">'price'</span>] +<span class="string">'&lt;/p&gt;'</span>;</div><div class="line">            str += <span class="string">'&lt;p class="comment"&gt;&lt;i&gt;'</span>+ curData[<span class="string">'comment'</span>] +<span class="string">'&lt;/i&gt;人评论&lt;/p&gt;'</span>;</div><div class="line">            str += <span class="string">'&lt;/li&gt;'</span>;</div><div class="line">        &#125;</div><div class="line">        productList.innerHTML = str;<span class="comment">//拼接好以后，最后再输出到ul中，由于dom映射非常强大，所以拼接好的字符串中的方法都会被应用起来</span></div><div class="line">    &#125;</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>给上面两个按钮添加点击事件<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; btn.length; i++) &#123;<span class="comment">//循环那两个按钮</span></div><div class="line">    btn[i].flag = <span class="number">-1</span>;<span class="comment">//添加属性名为flag，属性名为-1</span></div><div class="line">    btn[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="comment">//当当前的按钮触发点击事件的时候开始排序</span></div><div class="line">        sort.call(<span class="keyword">this</span>)<span class="comment">//，如果没有this，sort执行的时候，sort里函数的this是window，所以需要给sort里的this改成当前点击事件的主体；</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//sort排序，将产品进行排序并放到大的ul当中。</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> btnName = <span class="keyword">this</span>.getAttribute(<span class="string">'btnName'</span>);<span class="comment">//获取当前点击主体的属性名为btnname的属性值&#123;ok，price&#125;</span></div><div class="line">    <span class="keyword">var</span> lisary = <span class="built_in">Array</span>.prototype.slice.call(lis);<span class="comment">//lis为类数组，不具备数组的功能，需要通过数组中的slice方法，将类数组转化成数组，使用数组的方法</span></div><div class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</div><div class="line">    that.flag *= <span class="number">-1</span>;<span class="comment">//让每次执行sort的时候，this的属性名都乘以-1，乘以-1可以使排序的方向对调一下</span></div><div class="line">    lisary.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;<span class="comment">//将数组li进行排序</span></div><div class="line">        <span class="keyword">var</span> x = a.getAttribute(btnName);<span class="comment">//当前这个是btnName不是ok就是price，就看点击的时候点击按钮自带的的是ok属性还是 price属性。</span></div><div class="line">        <span class="keyword">var</span> y = b.getAttribute(btnName);<span class="comment">//由于在上面字符串拼接中在li这个行内样式将ok和price的属性也一起拼接到了li的行内属性中，所以在这里直接调用li的getAttribute这个行内样式的属性名的属性值就行，</span></div><div class="line">        <span class="keyword">return</span> (x - y) * that.flag;<span class="comment">//将li行内样式的属性名的属性值算出来赋值给x和y，这两个都是数字所以可以进行相减。</span></div><div class="line">    &#125;)</div><div class="line">    <span class="keyword">var</span> frg = <span class="built_in">document</span>.createDocumentFragment();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;lisary.length;i++)&#123;<span class="comment">//循环排好序的每一项</span></div><div class="line">        frg.appendChild(lisary[i]);<span class="comment">//将每一项都放到文档碎片当中。</span></div><div class="line">    &#125;</div><div class="line">    ul.appendChild(frg)<span class="comment">//再讲碎片放到ul这个大盒子中。</span></div><div class="line">    frg=<span class="literal">null</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="国家统计信息–表格排序"><a href="#国家统计信息–表格排序" class="headerlink" title="国家统计信息–表格排序"></a>国家统计信息–表格排序</h3><ol>
+<li><p>获取要操作的元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> table = <span class="built_in">document</span>.getElementById(<span class="string">'table'</span>);</div><div class="line"><span class="keyword">var</span> tHead = table.tHead;</div><div class="line"><span class="keyword">var</span> row = tHead.rows[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> ths = row.cells;<span class="comment">//获取这个行的每一列、每一个单元格</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> tBody = table.tBodies[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> tBodyRows = tBody.rows;<span class="comment">//获取这个大body的每一行</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>ajax引入数据（4步）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">;(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="comment">//包一个自运行函数可以使函数里的变量安全，是闭包的作用，不被外界的打扰</span></div><div class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest();<span class="comment">//创建一个这个类的实例，记住这个类</span></div><div class="line">    xhr.open(<span class="string">'get'</span>, <span class="string">'data.txt'</span>, <span class="literal">false</span>);<span class="comment">//打开一个描述，获取方式、地址、是否同步</span></div><div class="line">    xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;<span class="comment">//当状态发生改变之后操作</span></div><div class="line">        <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span> &amp;&amp; xhr.status == <span class="number">200</span>) &#123;<span class="comment">//前一个值返回4说明，后一个值为200时，代表成功获取到</span></div><div class="line">            <span class="built_in">window</span>.data = <span class="built_in">JSON</span>.parse(xhr.responseText)<span class="comment">//将获取到的数据存放在data里面，因为是字符串，需要转出JSON专有对象格式</span></div><div class="line">        &#125;    &#125;;</div><div class="line">    xhr.send()<span class="comment">//立即执行</span></div><div class="line">&#125;)();   <span class="built_in">console</span>.log(<span class="built_in">window</span>.data);</div></pre></td></tr></table></figure>
+</li>
+<li><p>把数据输出到页面中使用<strong>动态创建</strong>的方式，回头再用<strong>innerHTML</strong>的方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.data &amp;&amp; <span class="built_in">window</span>.data.length) &#123;<span class="comment">//如果data存在，并且数据的长度也存在，那么继续执行</span></div><div class="line">    <span class="keyword">var</span> frg = <span class="built_in">document</span>.createDocumentFragment();<span class="comment">//创建一个文档碎片</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; data.length; i++) &#123;<span class="comment">//循环数据中的每一项</span></div><div class="line">        <span class="keyword">var</span> tr = <span class="built_in">document</span>.createElement(<span class="string">'tr'</span>);<span class="comment">//创建一个tr元素，就是tr标签元素</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> data[i]) &#123;<span class="comment">//再循环数据中每一条中的每一个属性</span></div><div class="line">            <span class="keyword">var</span> td = <span class="built_in">document</span>.createElement(<span class="string">'td'</span>);<span class="comment">//创建一个td的标签元素</span></div><div class="line">            td.innerHTML = key == <span class="string">'develop'</span> ? data[i][key] ? <span class="string">'发达'</span> : <span class="string">'发展中'</span> : data[i][key];<span class="comment">//三元运算符套三元运算符，</span></div><div class="line">            <span class="comment">//第一个判断是如果是key属性名为develop的时候执行？？？如果不是的话将所有的属性塞到td标签元素中</span></div><div class="line">            <span class="comment">//第二个判断是在第一个判断基础中，前提是develop的话，如果是正确的就是true是1的时候就是‘发达’，如果是false布尔判断是0的话，就是‘发展中’</span></div><div class="line">            tr.appendChild(td);<span class="comment">//塞到tr标签元素中</span></div><div class="line">        &#125;;</div><div class="line">        frg.appendChild(tr);<span class="comment">//tr元素的内容塞到frg文档碎片中</span></div><div class="line">    &#125;</div><div class="line">    tBody.appendChild(frg);<span class="comment">//frg文档碎片塞到tbody这个大盒子中</span></div><div class="line">    frg=<span class="literal">null</span></div><div class="line">&#125;  &#125;)();</div></pre></td></tr></table></figure>
+</li>
+<li><p>隔行变色</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">changebg</span> (<span class="params"></span>)</span>&#123;<span class="comment">//创建函数，以后可能会调用</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;tBodyRows.length;i++)&#123;<span class="comment">//便利大body中的每一行</span></div><div class="line">    tBodyRows[i].className = i%<span class="number">2</span>? <span class="string">'c1'</span>:<span class="string">'c2'</span>;<span class="comment">//两种方式都行</span></div><div class="line">    tBodyRows[i].className = <span class="string">'c'</span>+i%<span class="number">2</span> <span class="comment">//常亮加引号，变量不用加</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">changebg()<span class="comment">//执行隔行变色</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>给表头添加点击事件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;ths.length;i++)&#123;<span class="comment">//首先循环表头中的每一项</span></div><div class="line">    ths[i].index=i;<span class="comment">//表头中的第i项添加一个属性，属性值为i，保存索引用来传给sort作为排序依据</span></div><div class="line">    ths[i].flag=<span class="number">-1</span>;<span class="comment">//表头中的第i项添加一个属性，属性值为-1，用来执行升序和降序切换的时候使用</span></div><div class="line">    <span class="keyword">if</span>(ths[i].className==<span class="string">'cursor'</span>)&#123;<span class="comment">//这个添加了一个类名，考虑到某些列项不需要点击，所以给需要点击的列项添加了类名</span></div><div class="line">        ths[i].onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            sort.call(<span class="keyword">this</span>,<span class="keyword">this</span>.index);<span class="comment">//一开始直接sort（）执行就可以了，但是现在需要用到事件函数中的this，所以需要把函数执行中的this替换成当前点击项，这样函数执行的时候，函数中的this就是 当前的点击函数。还有就是必须要传值，保证排序能够正常进行</span></div><div class="line">            changebg()<span class="comment">//由于背景是跟着当前的li，如果不添加的话，排序的时候很容易不遵循隔行变色，所以这里添加的意思是，只有点击的时候才执行隔行变色功能。</span></div><div class="line">            <span class="comment">//由于appendChild不会破坏元素上的属性，所以排序不执行隔行变色的时候，属性会跟着内容走，因为排序是根据内容排的。</span></div><div class="line">        &#125;    &#125;    &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>排序</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sort</span> (<span class="params">n</span>)</span>&#123;<span class="comment">//这一步是最后一步的执行，详情见第五步</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;ths.length;i++)&#123;</div><div class="line">        <span class="keyword">if</span>(ths[i]!=<span class="keyword">this</span>)&#123;</div><div class="line">            ths[i].flag=<span class="number">-1</span>;</div><div class="line">        &#125; &#125;</div><div class="line">    ---</div><div class="line">    <span class="keyword">this</span>.flag*=<span class="number">-1</span><span class="comment">//第三部设置-1是为了让点击的时候每次都乘以-1，保证切换</span></div><div class="line">    <span class="keyword">var</span> that =<span class="keyword">this</span>;<span class="comment">//因为this在函数中，this肯定会改变，所以赋值给that就可以使用that来调用this的功能</span></div><div class="line">    <span class="keyword">var</span> tBodyAry = [].slice.call(tBodyRows);<span class="comment">//排序需要先把td获取到的类数组转化成数组才能使用数组方法</span></div><div class="line">    tBodyAry.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;<span class="comment">//执行sort方法</span></div><div class="line">        <span class="keyword">var</span> x = a.cells[that.index].innerHTML;<span class="comment">//使用cells获取a这行中的每一个单元格，后面紧跟所以值，之前有设置过自定义属性，所以所以就是当前循环数i，。innerHTML是：将a这一行中索引为i的单元格在页面中**显示的内容**，赋值给x</span></div><div class="line">        <span class="keyword">var</span> y = b.cells[that.index].innerHTML;</div><div class="line"></div><div class="line">        <span class="keyword">if</span>(<span class="built_in">isNaN</span>(x)||<span class="built_in">isNaN</span>(y))&#123;<span class="comment">//判断是数字还是汉字 如果不是一个数，返回true</span></div><div class="line">            <span class="keyword">return</span> x.localeCompare(y)*that.flag;<span class="comment">//如果不是一个数，就按汉字的拼音首字母来从小到大排序</span></div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">return</span>(x-y)*that.flag;<span class="comment">//如果是数字就按减法来排序，每次点击都*-1，**-1位降序，1位升序**，每次都*-1，每次点击值都会发生改变</span></div><div class="line">        &#125;   &#125;);</div><div class="line">        <span class="comment">// return a.cells[n].innerHTML-b.cells[n].innerHTML; 这是 最初的模型，如果都是数字的就简单了。</span></div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;tBodyAry.length;i++)&#123;<span class="comment">//便利tbody中的每一行</span></div><div class="line">        tBody.appendChild(tBodyAry[i])<span class="comment">//将每一行添加到tbody的末尾</span></div><div class="line">    &#125;</div><div class="line">&#125;<span class="comment">//以上内容好好记一下，可以的话记得背下来</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p><strong>由于排序稍显复杂，可以分成每一小步来执行观察，方便理解</strong><br>//1. 第一步先让数字的一列执行从小到大排列<br>//2. 第二步再让数字的一列从小到大的排列<br>//3. 第三部我加入了一个判断，如果再页面中是汉字的话，就让他按字母排列，如果是数字的话就按从小到大排列<br>//4. 第四步我打算让点完升序，还想再点的时候实现降序的功能，我用的是在sort末尾乘以-1实现，每次点击都变换，默认-1为降序，1是降序<br>//5. 第五步我还想实现点这一项的时候，再点其他项的时候由升序来排列。（这样不管你那一项离开本项都是升序排列）</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+
+      <div align="center">
+        
+          <div class="copyright">
+          <p><span>
+          <b>本文地址：</b><a href="/2016/10/07/2.3 实战表格排序/" title="2.3 小练习产品排序、表格排序">http://yoursite.com/2016/10/07/2.3 实战表格排序/</a><br/><b>转载请注明出处，谢谢啊！</b>
+          </span></p>
+          </div>
+        
+      </div>
+
+      <div>
+        
+          
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="Monty Yuan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+        
+      </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+          
+            <a href="/tags/js入门/" rel="tag"># js入门</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/05/2.2 dom映射/" rel="next" title="2.2 dom映射、json数据格式">
+                <i class="fa fa-chevron-left"></i> 2.2 dom映射、json数据格式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/08/2.4 正则/" rel="prev" title="2.4 正则表达式：元字符、作用、分组、Replace">
+                2.4 正则表达式：元字符、作用、分组、Replace <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTUwOS82MDc3"></div>
+    
+  </div>
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Monty Yuan" />
+          <p class="site-author-name" itemprop="name">Monty Yuan</p>
+           
+              <p class="site-description motion-element" itemprop="description">自律使我自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/monty086" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#京东的产品排序"><span class="nav-number">2.</span> <span class="nav-text">京东的产品排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#国家统计信息–表格排序"><span class="nav-number">3.</span> <span class="nav-text">国家统计信息–表格排序</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Monty Yuan</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<a href="https://github.com/monty086">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://p1.bqimg.com/1949/5cea3a396d4ba8fc.png">
+</a>
+</body>
+</html>

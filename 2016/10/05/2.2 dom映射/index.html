@@ -1,0 +1,934 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javaScript,js入门," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://p1.bpimg.com/567571/b01abce46db6f4bc.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="知识点
+类数组 ：lis[li,li,li,li]、arguments
+元素集合，类数组集合 HTML Collection  
+数组集合：任然和页面内的li元素存在这种一一对应的关系，我们叫这种关系叫做dom映射 
+LocaleCompare，按照字母的排列排序
+只要循环体中套事件函数，就不要用这个 i（循环的变量） 因为你要用这个i这个i已经循环到最大值
+循环嵌套事件函数中的i值，会报错，因为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.2 dom映射、json数据格式">
+<meta property="og:url" content="http://yoursite.com/2016/10/05/2.2 dom映射/index.html">
+<meta property="og:site_name" content="长白小蒙">
+<meta property="og:description" content="知识点
+类数组 ：lis[li,li,li,li]、arguments
+元素集合，类数组集合 HTML Collection  
+数组集合：任然和页面内的li元素存在这种一一对应的关系，我们叫这种关系叫做dom映射 
+LocaleCompare，按照字母的排列排序
+只要循环体中套事件函数，就不要用这个 i（循环的变量） 因为你要用这个i这个i已经循环到最大值
+循环嵌套事件函数中的i值，会报错，因为">
+<meta property="og:updated_time" content="2017-05-15T15:42:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2.2 dom映射、json数据格式">
+<meta name="twitter:description" content="知识点
+类数组 ：lis[li,li,li,li]、arguments
+元素集合，类数组集合 HTML Collection  
+数组集合：任然和页面内的li元素存在这种一一对应的关系，我们叫这种关系叫做dom映射 
+LocaleCompare，按照字母的排列排序
+只要循环体中套事件函数，就不要用这个 i（循环的变量） 因为你要用这个i这个i已经循环到最大值
+循环嵌套事件函数中的i值，会报错，因为">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/05/2.2 dom映射/"/>
+
+
+
+
+
+  <title> 2.2 dom映射、json数据格式 | 长白小蒙 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f18e399141f4b0b08f3dfbe6d7bb305a";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">长白小蒙</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/resume" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-text"></i> <br />
+            
+            简历
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iydvVsUw37-P7nQ_DTcf','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/05/2.2 dom映射/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Monty Yuan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="长白小蒙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="长白小蒙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                2.2 dom映射、json数据格式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-05T00:00:00+08:00">
+                2016-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><ol>
+<li>类数组 ：lis[li,li,li,li]、arguments</li>
+<li>元素集合，类数组集合 HTML Collection  </li>
+<li>数组集合：任然和页面内的li元素存在这种一一对应的关系，我们叫这种关系叫做dom映射 </li>
+<li>LocaleCompare，按照字母的排列排序</li>
+<li>只要<strong>循环体</strong>中套<strong>事件函数</strong>，就不要用这个 i（循环的变量） 因为你要用这个i这个i已经循环到最大值</li>
+<li>循环嵌套事件函数中的i值，会报错，因为这是的i已经是最大值了，所以，下次循环中嵌套事件函数中，要记得用this来代替当前的事件函数</li>
+<li>这个循环结束之后，每个li 的onmouseover和onmouseout属性都被赋值一个函数</li>
+<li>try，catch只有在判断有报错的情况下用这个方法，相当于if else</li>
+<li><strong>In是判断一个运算符是不是一个对象的属性</strong>；<code>“setInterval” in window</code>  判断一个属性是否属于一个对象，  返回一个布尔值；共有属性和私有属性都可以判断；判断属性名字要用字符串， <code>‘JSON’ in window</code></li>
+<li><strong>debugger：</strong>断点调试，在控制台Sources 打个断点，就是查看循环每次的时候，每一次的变化，也可以查看函数或者其他代码执行到每一步的情况按f11也是</li>
+<li>任何一个引用数据类型if判断都是真的  undefined是fasle</li>
+<li>自己mork的数据之文本型文件都是字符串</li>
+<li>localhost：63342  代表本地端口为63342</li>
+<li><code>&lt;li price=&quot;2&quot;&gt;</code> get arrtibute获取这个属性值</li>
+<li><code>Array.prototype.slice.call(list,0)</code>这个是通过array.原型找到这个slice方法，如果不是数组就找不到这个方法，也可以是一个[ ]，数组也有slice方法，最后利用call方法改掉slice方法里的this，而这个this是slice这个方法的实例，所以把实例改成list，最后克隆一份list出来。</li>
+<li>创建文档碎片的目的是为了减少dom回流，考虑到了性能方向的问题。</li>
+<li>如果之前的元素上面绑定方法和属性，就可以用inneriHTML的方式和字符串拼接的方式来用，这个方式会破坏原有元素的属性，所以不存在任何元素的时候可以用这个方法。</li>
+<li>如果用<code>appendChild</code>的方式可以保证原有的方式不被破坏，动态创建的方式并不会原来元素的属性，但是操作起来不便，还有可能引起多次回流。</li>
+<li>造假数据的过程叫做mork</li>
+<li>indexOf lastIndexOf   根据索引找字符，找不到-1</li>
+<li>直接添加到行内属性的，就是获取行内属性，需要用<code>get attribute</code>  这种属性</li>
+<li>window.navigator.userAgent属性包含了浏览器类型、版本、操作系统类型、浏览器引擎类型等信息，通过这个属性来判断浏览器类型。</li>
+</ol>
+<h3 id="Dom映射"><a href="#Dom映射" class="headerlink" title="Dom映射"></a>Dom映射</h3><p><code>什么是dom映射</code><br>页面中的<strong>元素</strong>，通过<strong>dom方法</strong>，获取回来的<strong>集合</strong>，这个<strong>集合</strong>任然和<strong>页面中的元素</strong>存在这种<strong>一一对应</strong>的<strong>关系</strong>   就是<strong>dom映射</strong>  。并且即使这个元素暂时不存在，那么这个<code>变量lis</code>集合任然会随着<code>页面内li</code>的<code>增加而增加，减少而减少</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 通过dom方法获取回来的集合</span></div><div class="line"><span class="built_in">console</span>.log(lis); <span class="comment">// HTMLCollection 类数组集合</span></div><div class="line"><span class="comment">// 把集合转化成数组，为了使用数组中的方法</span></div><div class="line"><span class="keyword">var</span> lisAry = utils.listToArray(lis); <span class="comment">//调用已经封装好的函数utils</span></div><div class="line"><span class="built_in">console</span>.log(lisAry); <span class="comment">// 数组集合 =&gt; 仍然和页面内的li元素存在这种一一对应关系</span></div><div class="line"><span class="comment">// 把数组排序</span></div><div class="line">lisAry.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>)</span>&#123; <span class="comment">// a、b相邻两个数，localeCompare根据首字母排列</span></div><div class="line">    <span class="keyword">return</span> a.innerHTML - b.innerHTML;</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(lisAry);<span class="comment">//输出排序好的数组</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>排序方法：</p>
+<ol>
+<li>页面中的元素先获取到，dom方式获取回来，得到一个类数组</li>
+<li>元素转数组，因为没有排序方法</li>
+<li>排序</li>
+<li>送回去，不是多出来，只是改变他的位置</li>
+</ol>
+</blockquote>
+<p>   <strong>我想在这插入一个类数组转数组的方法</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> utils=&#123;</div><div class="line">    <span class="attr">listtoArray</span> : <span class="function"><span class="keyword">function</span>(<span class="params">list</span>)</span>&#123;<span class="comment">//属性名为listtoArray，形参为list</span></div><div class="line">        <span class="keyword">try</span>&#123;</div><div class="line">            <span class="comment">//把slice方法中的this修改成了list数组，因为slice中的this就都是克隆的那个数组，把this改成list后，就变成了克隆list并且返回，ie8以下都不兼容</span></div><div class="line">            <span class="comment">//打个比方：ary.slice() 相当于克隆了一份ary</span></div><div class="line">            <span class="comment">// 然后 ary.slice.call(list)相当于把ary和list进行的替换，然后克隆了一份list出来，返回的就是数组</span></div><div class="line">            <span class="built_in">Array</span>.prototype.slice.call(list,<span class="number">0</span>)<span class="comment">//由于在ie中不兼容，所以先尝试执行这里的代码，如果执行报错，再执行catch里面的代码</span></div><div class="line">        &#125;<span class="keyword">catch</span>(e)&#123;<span class="comment">//catch里面的e是上面报错的话，下面的e可以打印出上面报什么错</span></div><div class="line">            <span class="built_in">console</span>.log(e.massage)<span class="comment">//e.massage保存着报错的信息 js中容错机制，（对错误的处理）其实就是把报错的信息，打印出来，没有红色的×了。</span></div><div class="line">            <span class="keyword">var</span> ary =[];</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;list.length;i++)&#123;</div><div class="line">                ary.push(list[i])</div><div class="line"> &#125;   <span class="keyword">return</span> ary     &#125;    &#125;    &#125;</div></pre></td></tr></table></figure>
+<p><strong>循环把已经排序好的这些li重新添加到页面中 =&gt; 页面中多了元素还是原有元素调换位置??</strong></p>
+<ul>
+<li><code>document.createDocumentFragment()</code>; 创建一个文档碎片</li>
+<li><strong>debugger：</strong>断点调试，在控制台Sources 打个断点，就是查看循环每次的时候，每一次的变化，也可以查看函数或者其他代码执行到每一步的情况</li>
+<li><strong>dom映射：</strong>页面中的元素，通过dom方法获取到的集合，集合任然和页面中的元素存在一一对应关系，我们把这关系叫做，dom映射</li>
+<li><strong>dom回流：</strong>页面中元素位置的改变，或者元素的增加和删除，都会引起dom回流；简单来说就是 <code>就是少了挤上去，多了撑出来</code>dom回流相对于dom重绘更耗费性能</li>
+<li><strong>dom重绘：</strong>  页面中的元素样式的改变会引起重绘<code>单个元素改样式</code><br>===&gt;：尽量去避免回流，因为相对重绘而言，回流更耗性能，</li>
+<li><strong>文档碎片：</strong>简单来说就是一个dom容器；简单说来就是创建一个临时的dom容器，先在这个容器里调试成功后，将新增加的元素并不会影响原有li的事件，在和页面中的原有元素进行替换，减少dom回流，也为了减少性能，<code>利用完文档碎片后，记得主动释放文档碎片空间</code></li>
+<li><strong>模板引擎：</strong>在真正开发的时候，动态创建和innerHTML用的都少，用的多的是模板引擎；只要有了模板直接换对应的数据就可以了，详细见上一章</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> frg = <span class="built_in">document</span>.createDocumentFragment(); <span class="comment">// 创建一个文档碎片，dom临时容器</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; lisAry.length; i++)&#123;<span class="comment">//循环数组中的每一项</span></div><div class="line">        <span class="comment">//debugger; 利用这个断点调试</span></div><div class="line">        <span class="comment">//list.appendChild(lisAry[i]); // 按理说应该把这些li添加到list中，但是可能会照成dom回流</span></div><div class="line">        frg.appendChild(lisAry[i]); <span class="comment">// 暂时先把这些li添加到文档碎片中</span></div><div class="line">    &#125;</div><div class="line">    list.appendChild(frg); <span class="comment">// 把包含所有 li的文档碎片添加到list列表中，减少dom回流，和减少性能</span></div><div class="line">    frg = <span class="literal">null</span>; <span class="comment">// 主动释放文档碎片</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>经过验证：是把原有元素重新调换位置   ； 那些增加的属性onmouseover和onmouseout还有xxxx属性还存在不??  =&gt;存在  说明使用appendChild(动态添加)的方式不会影响元素的任何属性,曾经绑定过的事件现在还存在<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 我想在页面中原有的基础上增加4个 </span></div><div class="line"><span class="comment">// 第一个种方法（动态创建）</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">5</span>; i &lt;= <span class="number">8</span>; i++)&#123;<span class="comment">//因为前面已经有4项，可以先从第五项开始设置</span></div><div class="line">        <span class="keyword">var</span> li = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);<span class="comment">//动态创建一个li标签元素</span></div><div class="line">        li.innerHTML = i;<span class="comment">//在li这个元素标签中添加i数字</span></div><div class="line">        list.appendChild(li);<span class="comment">//将li添加到list这个元素集合中</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第二种方法： innerHTML的方式 =&gt; 会破坏原有元素的属性。</span></div><div class="line">   <span class="keyword">var</span> str = <span class="string">''</span>;</div><div class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">9</span>; i &lt;= <span class="number">10</span>; i++)&#123;<span class="comment">//上面用动态创建过5-8</span></div><div class="line">       str += <span class="string">'&lt;li&gt;'</span> + i + <span class="string">'&lt;/li&gt;'</span>;<span class="comment">//字符串拼接的方法，这里循环2次所以有2个li</span></div><div class="line">   &#125;</div><div class="line">   list.innerHTML = list.innerHTML + str;向元素中添加str（<span class="number">2</span>次li）</div><div class="line">   <span class="comment">//list.innerHTML += str;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>总结 : 动态创建和innerHTML</strong></p>
+<ul>
+<li>动态创建的方式并不会影响原有元素的任何属性,但是操作不便还有可能引起多次回流</li>
+<li>innerHTML的方式操作起来比较简便，但是它会破坏原有元素的属性。不存在任何元素用比较合适 =&gt; 模板引擎</li>
+</ul>
+</blockquote>
+<p><strong>动态添加：</strong>appendChild/insertBefore（新，旧），麻烦，有可能引起多次回流，<br><strong>innerHTML的方式：</strong>拼接字符串。简便但是会影响页面已经存在的元素。如果页面中不存在元素；使用拼接字符串的方式比较好。</p>
+<blockquote>
+<p>排序的时候加.innerHTML的时候，是因为sort（A,B）里面不是数字不能相减，所以需要元素内部的数字，内容可以相减的话需要用innerHTML<br>使用innerHTML会影响原来存在的元素，比如事件丢失，</p>
+</blockquote>
+<hr>
+<h3 id="JSON数据格式"><a href="#JSON数据格式" class="headerlink" title="JSON数据格式"></a>JSON数据格式</h3><p><strong>定义：</strong>就是一种数据格式，<code>跨平台里面的兼容性最好</code><br> <strong>JSON格式 :</strong> 属性名字用双引号包含，属性值如果是字符串也用双引号包含<br> 在ie7-不兼容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123; <span class="comment">// js对象</span></div><div class="line">        name : <span class="string">'cb'</span>,</div><div class="line">        <span class="attr">age</span> : <span class="number">8</span></div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">var</span> jsonObj = &#123; <span class="comment">// json格式的对象</span></div><div class="line">        <span class="string">"name"</span> : <span class="string">"cb"</span>,</div><div class="line">        <span class="string">"age"</span> : <span class="number">8</span></div><div class="line">    &#125;;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">window</span>.JSON); <span class="comment">// JSON对象</span></div></pre></td></tr></table></figure>
+<p><code>json方法</code><br> <strong>JSON.parse :</strong>  把json格式的<strong>字符串</strong>转化成<strong>json格式的对象</strong>  <code>eval</code>也可以转化成js代码执行<br> <strong>JSON.stringify :</strong> 把json格式的<strong>对象</strong>转化成一个<strong>json格式的字符串</strong><br> <code>ps : 在IE7以下不兼容</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> res = <span class="built_in">JSON</span>.stringify(jsonObj);<span class="comment">//stringify：json对象转化成字符串</span></div><div class="line">   <span class="built_in">console</span>.log(res);</div><div class="line"></div><div class="line">   <span class="keyword">var</span> res1 = <span class="built_in">JSON</span>.parse(res);<span class="comment">//parse：字符串转化成json对象</span></div><div class="line">   <span class="built_in">console</span>.log(res1);</div></pre></td></tr></table></figure>
+<p> <strong>但是json方法不兼容，用eval的方式来处理兼容问题的，只是在ie7以下不兼容，在谷歌浏览器及其他浏览器下兼容</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsonParse</span>(<span class="params">jsonStr</span>)</span>&#123;<span class="comment">//使用一个方法来让json方法兼容</span></div><div class="line"><span class="keyword">if</span>(<span class="built_in">window</span>.JSON)&#123; <span class="comment">// 对象 undefined  判断真假，真的话执行，如果json在window下定义的话，说明兼容当前浏览器，所以执行下面的字符串转对象方法</span></div><div class="line">            <span class="keyword">return</span> <span class="built_in">JSON</span>.parse(jsonStr);</div><div class="line">        &#125;<span class="keyword">else</span>&#123; <span class="comment">// ie7-  如果不兼容说明是在ie7-，所以执行eval的方法，执行字符串拼接，最后再输出字符串</span></div><div class="line">            <span class="keyword">return</span> <span class="built_in">eval</span>(<span class="string">'('</span>+jsonStr+<span class="string">')'</span>);</div><div class="line">        &#125;<span class="comment">//两个都添加return，最后都要求输出</span></div><div class="line">		 <span class="keyword">return</span> <span class="built_in">window</span>.JSON ? <span class="built_in">JSON</span>.parse(jsonStr) : <span class="built_in">eval</span>(<span class="string">'('</span>+jsonStr+<span class="string">')'</span>);</div><div class="line">        <span class="keyword">return</span> <span class="string">"JSON"</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="built_in">JSON</span>.parse(jsonStr) : <span class="built_in">eval</span>(<span class="string">'('</span>+jsonStr+<span class="string">')'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>JSON和普通对象的区别，属性名需要用双引号包含，属性值是字符串的话，那也用双引号。如果是最后一个1和0的数字求值，不能用引号<br>JSON是定义在全局的一个变量，window.JSON<br>JSON.stringify，对象转字符串 加双引号<br>JSON.parse 字符串转对象  去双引号<br>ie7以下不支持<br>eval也可以去双引号</p>
+</blockquote>
+<p><strong>由于JSON方法在ie7-不兼容，下面多一个方法检出处理兼容问题</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsonParse</span>(<span class="params">jsonstr</span>)</span>&#123;</div><div class="line">        <span class="comment">// 简单处理兼容问题的方法</span></div><div class="line">        <span class="keyword">return</span> <span class="string">'JSON'</span> <span class="keyword">in</span> <span class="built_in">window</span> ? <span class="built_in">JSON</span>.parse(jsonstr) : <span class="built_in">eval</span>(<span class="string">'('</span>+jsonstr+<span class="string">')'</span>);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p><strong>in运算符：</strong>判断一个属性是否属于一个对象   ==》返回布尔值<br>所有的属性名都是字符串<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//In是判断一个运算符是不是一个对象</span></div><div class="line"><span class="comment">//in运算符主要是判断一个属性是否是一个对象</span></div><div class="line"><span class="comment">//共有属性和私有属性都可以判断。</span></div><div class="line"></div><div class="line"><span class="keyword">in</span>：“setinterval” <span class="keyword">in</span> <span class="built_in">window</span>  <span class="comment">//判断一个属性是否属于一个对象，  返回一个布尔值</span></div><div class="line"><span class="comment">//ps：共有属性能调用也是真</span></div><div class="line"><span class="comment">//ps：判断属性名字要用字符串， ‘JSON’ in window</span></div></pre></td></tr></table></figure></p>
+<h3 id="交互逻辑（简单的交互模型）"><a href="#交互逻辑（简单的交互模型）" class="headerlink" title="交互逻辑（简单的交互模型）"></a><strong>交互逻辑（简单的交互模型）</strong></h3><ol>
+<li>用户在网页（前端）搜索条件，请求带着数据到后台，后台准备数据，到数据库中查询，查询到数据后，吧数据拼凑成我们所需要的dom结构，然后添加到页面中，进行展示，构成页面的结构</li>
+<li>后台分为：net  php java python 处理请求（商店店员）带着需求，到数据库查询 找到后，返回到后台 。到后台准备数据，（把从数据库中查询来的结果组合成前端所需要的数据格式） 这样的格式是json（这个格式适应大部分平台）  一般情况下是一个对象</li>
+<li>数据库一本分为：Oracle（大型企业）  mysql  sqlsevele  存的都是数据  表结构（一组数据）（手机有手机的表结构，电脑有电脑表结构）  字段（属性名）</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+
+      <div align="center">
+        
+          <div class="copyright">
+          <p><span>
+          <b>本文地址：</b><a href="/2016/10/05/2.2 dom映射/" title="2.2 dom映射、json数据格式">http://yoursite.com/2016/10/05/2.2 dom映射/</a><br/><b>转载请注明出处，谢谢啊！</b>
+          </span></p>
+          </div>
+        
+      </div>
+
+      <div>
+        
+          
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="Monty Yuan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+        
+      </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+          
+            <a href="/tags/js入门/" rel="tag"># js入门</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/03/2.1 原型、call/" rel="next" title="2.1 原型、call、apply、bind、继承(属性+方法)">
+                <i class="fa fa-chevron-left"></i> 2.1 原型、call、apply、bind、继承(属性+方法)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/07/2.3 实战表格排序/" rel="prev" title="2.3 小练习产品排序、表格排序">
+                2.3 小练习产品排序、表格排序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTUwOS82MDc3"></div>
+    
+  </div>
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Monty Yuan" />
+          <p class="site-author-name" itemprop="name">Monty Yuan</p>
+           
+              <p class="site-description motion-element" itemprop="description">自律使我自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/monty086" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dom映射"><span class="nav-number">2.</span> <span class="nav-text">Dom映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON数据格式"><span class="nav-number">3.</span> <span class="nav-text">JSON数据格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交互逻辑（简单的交互模型）"><span class="nav-number">4.</span> <span class="nav-text">交互逻辑（简单的交互模型）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Monty Yuan</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<a href="https://github.com/monty086">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://p1.bqimg.com/1949/5cea3a396d4ba8fc.png">
+</a>
+</body>
+</html>

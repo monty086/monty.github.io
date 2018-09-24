@@ -1,0 +1,982 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javaScript,js入门," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://p1.bpimg.com/567571/b01abce46db6f4bc.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="知识点
+弹窗的3种方式：
+alert（）
+confirm（）
+prompt（）
+
+
+预解释在代码执行之前已经完成
+预解释也是从上到下执行
+在预解释阶段：如果函数名和变量名名字相同，表示都声明过了，在预解释阶段以最后一个函数为准，当代码执行到变量赋值的那一行，以这个变量为准
+形参相当于函数体内的私有变量，而且还有值
+若函数里没有需要的值会向上找上一级作用域：跳出当前函数，谁包着你，谁就是上级作用域，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1.3 this用法、单例模式、构造函数模式">
+<meta property="og:url" content="http://yoursite.com/2016/10/02/1.3 this/index.html">
+<meta property="og:site_name" content="长白小蒙">
+<meta property="og:description" content="知识点
+弹窗的3种方式：
+alert（）
+confirm（）
+prompt（）
+
+
+预解释在代码执行之前已经完成
+预解释也是从上到下执行
+在预解释阶段：如果函数名和变量名名字相同，表示都声明过了，在预解释阶段以最后一个函数为准，当代码执行到变量赋值的那一行，以这个变量为准
+形参相当于函数体内的私有变量，而且还有值
+若函数里没有需要的值会向上找上一级作用域：跳出当前函数，谁包着你，谁就是上级作用域，">
+<meta property="og:updated_time" content="2017-05-15T15:12:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1.3 this用法、单例模式、构造函数模式">
+<meta name="twitter:description" content="知识点
+弹窗的3种方式：
+alert（）
+confirm（）
+prompt（）
+
+
+预解释在代码执行之前已经完成
+预解释也是从上到下执行
+在预解释阶段：如果函数名和变量名名字相同，表示都声明过了，在预解释阶段以最后一个函数为准，当代码执行到变量赋值的那一行，以这个变量为准
+形参相当于函数体内的私有变量，而且还有值
+若函数里没有需要的值会向上找上一级作用域：跳出当前函数，谁包着你，谁就是上级作用域，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/02/1.3 this/"/>
+
+
+
+
+
+  <title> 1.3 this用法、单例模式、构造函数模式 | 长白小蒙 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f18e399141f4b0b08f3dfbe6d7bb305a";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">长白小蒙</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/resume" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-text"></i> <br />
+            
+            简历
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iydvVsUw37-P7nQ_DTcf','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/02/1.3 this/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Monty Yuan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="长白小蒙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="长白小蒙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                1.3 this用法、单例模式、构造函数模式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-02T00:00:00+08:00">
+                2016-10-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a><strong>知识点</strong></h3><ol>
+<li>弹窗的3种方式：<ol>
+<li>alert（）</li>
+<li>confirm（）</li>
+<li>prompt（）</li>
+</ol>
+</li>
+<li>预解释在代码执行之前已经完成</li>
+<li>预解释也是<strong>从上到下</strong>执行</li>
+<li>在预解释阶段：如果<strong>函数名</strong>和<strong>变量名</strong>名字相同，表示都声明过了，<strong>在预解释阶段以最后一个函数为准</strong>，<code>当代码执行到变量赋值的那一行，以这个变量为准</code></li>
+<li>形参相当于函数体内的私有变量，而且还有值</li>
+<li>若函数里没有需要的值会向上找<strong>上一级作用域</strong>：跳出当前函数，谁包着你，谁就是上级作用域，顶级作用域是window</li>
+<li><code>var f =fn()  var f1=f  f =null</code> 即使f被释放，f1也不会被释放</li>
+<li><code>typeof fn ==&quot;function&quot;&amp;&amp; fn( )</code>这行代码说明&amp;&amp;前面的满足后，后面的执行</li>
+<li>形参没有赋值，那形参的变量是undefined ；undefined+1=nan</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var obj =&#123;num:1</div><div class="line">		  age:2   &#125;</div><div class="line">obj.age=2 //这=号和对象&#123;&#125;里面的：其实都是给age赋值的意思。</div></pre></td></tr></table></figure>
+<h3 id="this的用法（函数中）"><a href="#this的用法（函数中）" class="headerlink" title="this的用法（函数中）"></a>this的用法（函数中）</h3><ol>
+<li>绑定<strong>事件函数</strong>中的<code>this</code>：当事件触发的时刻，绑定给哪个dom元素，this就是谁</li>
+<li><p><code>obj.fn（）</code> <strong>fn函数中的this是obj了</strong>：函数执行时，函数中的this就是执行这个函数的对象名==》<code>&#39;.&#39;</code>前面是谁，<strong>这个函数中的this</strong>就是谁，没有<code>’.‘</code>是window;函数执行时的this，就看函数执行时刻，<code>&#39;.&#39;</code>前面是谁，如果有；this就是它，如果没有；this就是window，</p>
+<ol>
+<li>只要有函数包含<strong>执行带有this的这个函数</strong>，那么this一定会发生改变</li>
+<li>只有函数执行的那一刻，才确定函数中的this。比如fn（）；obj.fn（）</li>
+<li>fn( ) 和 obj.fn( ) 执行的是同一个函数，由于执行方式不同导致this不同。</li>
+<li>函数定义的时候this不能确定，只有执行的时候才能确定，因为我没有看它执行的方式</li>
+<li>打印一个属性，要么有，要么undefined，比如win.xxx，打印为undefined<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function()&#123;   &#125;</div><div class="line">var ary =[print]</div><div class="line">ary[0]();//this是数组，是ary这个数组</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p><strong>自执行函数</strong>中的this就是 <code>window</code>（非严格模式下）</p>
+</li>
+<li><strong>定时器</strong>函数中的this一般都是<code>window</code>就算里面是obj.obj，<code>这个函数中的this也是window</code></li>
+<li><strong>构造函数</strong>中的this是<strong>当前实例</strong></li>
+<li>call&amp;apply&amp;bind都可以强制<code>修改</code>this（<code>js中提供三个方法可以强制改this</code>）</li>
+<li><strong>回调函数</strong>中的this一般也是window</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">div1.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">this</span>; <span class="comment">// div1  &#125;</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span>(<span class="params"></span>) </span>&#123;  <span class="built_in">console</span>.log(<span class="keyword">this</span>); &#125;</div><div class="line">    <span class="keyword">var</span> oo = &#123;</div><div class="line">        <span class="attr">fun</span>: fun,<span class="comment">//对象中用，把每个属性分开</span></div><div class="line">        name: <span class="string">'montyyuan'</span></div><div class="line">        obj:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        fun&#125;<span class="comment">//这里的fun里的this因为有函数包裹，所以this属于window</span></div><div class="line">         &#125;</div><div class="line">    oo.fun()<span class="comment">//函数执行，fun中的this是oo的</span></div><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">//自执行函数中的this是window &#125;)();</span></div><div class="line"><span class="built_in">window</span>.setInterval(oo.fun,<span class="number">1000</span>); <span class="comment">// 定时器中的this是window</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>全局中的this是window</li>
+<li>只要有函数包含<strong>执行带有this的这个函数</strong>，那么this一定会发生改变</li>
+<li>函数刚定义完（没有执行），this是<strong>谁不知道</strong>，只有执行的时候，谁<code>&#39;.&#39;</code>我，this就是谁，如果没有<code>‘.’</code>，那就是window</li>
+<li>只有函数执行的那一刻才能确定函数中的this  比如 <code>fn（）  obj.fn( )</code></li>
+<li>fn( )和obj.fn( ) 执行的是同一个函数，由于执行的方式不同，导致this不同<br>没有被函数包着的this都是window的属性，实参里的this都属于window，只有函数里的this才有他的宿主</li>
+</ul>
+</blockquote>
+<h4 id="两种方法（判断this）："><a href="#两种方法（判断this）：" class="headerlink" title="两种方法（判断this）："></a>两种方法（判断this）：</h4><ol>
+<li>第一种是this所在的函数执行 fn（）fn前面的.前面是谁，this就是谁</li>
+<li>第二种是： <strong>主要就是把this所在的函数，看做一个整体，谁执行这个整体，点前面是谁this就是谁</strong>。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;</div><div class="line">       obj: function fm() &#123;</div><div class="line">		                   console.log(this)</div><div class="line">            return function fn() &#123;</div><div class="line">                           console.log(this)</div><div class="line"> &#125;</div><div class="line"> &#125;</div><div class="line"> &#125;//查看当前this所在的位置</div><div class="line">    fn()//w，</div><div class="line">    obj.fm()()//obj,w </div><div class="line">    obj.fm()//obj</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//简单一个案例，试着做一下</div><div class="line">var num=1;</div><div class="line">    var obj=&#123;num:2&#125;;</div><div class="line">    obj.fn=(function (num) &#123;</div><div class="line">        this.num+=2;</div><div class="line">        num--;</div><div class="line">        return function (n) &#123;</div><div class="line">            this.num+=2;</div><div class="line">            num--;</div><div class="line">            console.log(n+ ++num);</div><div class="line">        &#125;</div><div class="line">    &#125;)(this.num);</div><div class="line">    var fn=obj.fn;</div><div class="line">    fn(1);//fn前面没有.默认就是window</div><div class="line">    obj.fn(2); //和上面一样都是执行同一个函数，只不过前面有.，关键就是看执行的这个带有this的函数，前面的.是谁，就是谁</div><div class="line">    console.log(num,obj.num);</div></pre></td></tr></table></figure>
+<h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a><strong>单例模式</strong></h3><ul>
+<li>本质：其实就是一个对象（<code>花括号</code>）用对象作为一个模块的划分</li>
+<li>解决命名冲突（<code>函数名与函数名冲突</code>）</li>
+<li>代码模块化（<code>方便代码管理</code>）</li>
+<li>最常用的（<code>大部分公司都是 单例模式</code>）</li>
+<li>又叫做命名空间==&gt;<code>nameSpace</code></li>
+</ul>
+<blockquote>
+<p>每个<strong>单例模式中，属性和属性之间的调用使用this就可以</strong>。比如在guonei.fn1中调用fn2直接使用this.fn2，就直接在fn1函数中的this.fn2即可，不过这样容易形成循环</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var guonei =&#123;</div><div class="line">	num: 10</div><div class="line">	fn1 ：function ()&#123;</div><div class="line">	this.fn2</div><div class="line">	&#125;</div><div class="line">	fn2 : function ()&#123;</div><div class="line">	this.fn1</div><div class="line">	this.num</div><div class="line">	&#125;   &#125;</div><div class="line">	guonei.fn1()</div></pre></td></tr></table></figure>
+<h3 id="构造函数（类）"><a href="#构造函数（类）" class="headerlink" title="构造函数（类）"></a>构造函数（类）</h3><blockquote>
+<p>内置类：<br>基本数据类型：Number  String Boolean 引用数据类型：Array  Object  Date  RegExp  Function  HTMLDivElement/如果是p标签就是 p标签的全称</p>
+</blockquote>
+<p><code>为什么定义一个类，因为原来的不够用。</code><br>类：其实就是一个函数（定义一个函数和定义一个函数都用关键字function）</p>
+<p>实例：具体到这个类的某一个；创建一个实例用关键字 new Tab（）</p>
+<p>instanceof：判断一个实例是否属于一个类</p>
+<p>函数角色：普通函数、构造函数（类）、function这个函数内置类的一个实例</p>
+<p>当做构造函数（new的方式执行）那么会有默认返回实例的动作（不写return也会返回实例）</p>
+<p>每个实例都是一个对象数据类型<code>var tab1 = new Tab ( 100,200)</code></p>
+<p>在构造函数中如果return一个引用数据类型，会破坏实例的默认返回动作，非return 就this吧</p>
+<p>构造函数中的this就是当前实例（正在使用new运算这个实例）</p>
+<p>typeof  ：’number’  ‘boolean’  ‘string’  ‘object’ ‘function’ ‘undefined’<br>instanceof  ：判断一个实例是否属于一个类<br>constructor<br>Object.prototype.toString.call（）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">function Tab ( )&#123; &#125;//定义了一个选项卡的类</div><div class="line">var tab1 = new Tab ( )//创建了一个实例</div></pre></td></tr></table></figure>
+<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><ol>
+<li>比如有的方法，不应该作为私有属性，<code>就像FE前端工程师就应该会写代码</code></li>
+<li><p>任何一个函数天生自带一个属性叫做prototype，并且属性值任然是一个对象，并且这个对象天生自带一个属性叫，constructor；它的属性值是函数本身。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FE.prototype.constructor===FE    //true</div></pre></td></tr></table></figure>
+</li>
+<li><p>任何一个实例也天生自带一个属性：<code>__proto__</code>这个属性值就是 这个实例所属类（构造函数）的原型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">FE.prototype===fe1.__proto__   // true</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>ps：由于每个实例都会自带<code>__proto__</code>属性，那么每个实例都可以通过这个属性访问自己所属类的原型，这个原型其实就是相对于每个实例来说，就是公共区域；公共区域内的属性也随之变成了公有属性；实例<code>__proto__</code>属性其中这个获取方式<code>__proto__</code>可以省略<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">FE.prototype.coding= <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123; &#125; 相当于在原型 上添加了一个coding属性</div><div class="line">fe1.__proto__.coding === FE.prototype.coding</div></pre></td></tr></table></figure></p>
+<p>ps1：直接添加共有方法，直接添加在类 （构造函数）的（原型）prototype属性上即可</p>
+<p>ps2：任何一个引用数据类型，都天生自带<code>__proto__</code>属性，并且这个属性（引用数据类型）永远指向<strong>所属类的原型</strong></p>
+<p>ps3：定义在类的原型上的方法，比如FE.prototype.coding，一般由实例来调用，那么构造函数中的this一般就是这个实例</p>
+<hr>
+<p>后面加个小括号的都是函数数据类型</p>
+<p>由于执行方式不同，区分普通函数和构造函数</p>
+<p>定义：如果没有这个类，需要自己创建一个类，就叫做构造函数</p>
+<p>举例：<code>function Tab ( ){ }</code>   //没有tab这个类，就需要自己创建这样一个类，<code>new是我想造这个类的一个实例</code>然后实例执行：<code>var  tab = new Tab</code>大括号里的是实例的执行内容<br><strong>既然我创造了它，怎么区分呢？</strong><br>如何区别？就看怎么执行他，是一个<strong>函数</strong>还是一个<strong>类</strong>，函数的话执行是<code>Tab（）</code>；类的话创建实例是<code>var  tab = new Tab</code></p>
+<p><strong>实例：</strong>具体到类中的某一个，每一个实例都是一个对象数据类型Objcet</p>
+<ul>
+<li>ps：每一个数组都是Array这个类的一个实例</li>
+<li>ps：每一个函数都是Function这个类的一个实例，无论是实名还是匿名、自执行函数<br>内置类</li>
+<li>ps：咱们班每一个人都是Chinese中国人这个类的一个实例</li>
+<li>ps：instanceof 专门判断一个实例是否属于一个类的，返回布尔值</li>
+</ul>
+<p><strong>如何定义一个类</strong> <code>function Tab ( ){ }</code>和定义函数相同</p>
+<ul>
+<li>ps：既是普通函数、构造函数（类）、又是Function这个类的一个实例</li>
+<li>ps：构造一个类尽量使用<strong>首字母大写</strong></li>
+<li>ps：<strong>构造函数中的this就是当前实例</strong> =&gt; 如果想在实例添加私有属性；就在构造函数中添加 this.属性名，</li>
+<li>ps：函数会默认返回一个实例，但是不能在构造函数中再写return一个引用数据类型<code>变成一个函数</code>（return基本数据类型不影响构造函数结构，但是<code>实例不会读取</code>）</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function Human(weight,height)&#123;</div><div class="line">        //var abc = 1000; // 这个私有变量不会对实例产生过影响</div><div class="line">        this.weight = weight/*&apos;4kg&apos;*/;</div><div class="line">        this.height = height/*&apos;0.3m&apos;*/;</div><div class="line">        //return //构造函数会默认return一个实例</div><div class="line">        //return [];引用数据类型会影响构造函数的结构</div><div class="line">    &#125;要想往实例上添加内容，必须用this</div><div class="line"></div><div class="line">    var lilei = new Human(&apos;4kg&apos;,&apos;0.3m&apos;);//Human &#123;weight: &quot;4kg&quot;, height: &quot;0.3m&quot;&#125;</div><div class="line">    var hanmeimei = new Human(&apos;5kg&apos;,&apos;0.4m&apos;);//Human &#123;weight: &quot;5kg&quot;, height: &quot;0.4m&quot;&#125;</div><div class="line"></div><div class="line">    console.log(lilei);</div><div class="line">    console.log(hanmeimei);</div></pre></td></tr></table></figure>
+<p>每个类都是一个函数的一个实例<br>无论怎么造一个新的类都是对象（引用数据类型）的一个实例</p>
+<p>所有的<strong>引用数据类型</strong>都是<strong>Object</strong>这个类的实例<br>标签元素也是Object对象类的一个实例<br>标签元素分为：HTMLDivElement、</p>
+<p>Array instanceof Function //true<br>[ ].push instanceof Function //true   <strong>数组执行方法</strong>也是<strong>函数类</strong>的一个实例</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+
+      <div align="center">
+        
+          <div class="copyright">
+          <p><span>
+          <b>本文地址：</b><a href="/2016/10/02/1.3 this/" title="1.3 this用法、单例模式、构造函数模式">http://yoursite.com/2016/10/02/1.3 this/</a><br/><b>转载请注明出处，谢谢啊！</b>
+          </span></p>
+          </div>
+        
+      </div>
+
+      <div>
+        
+          
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="Monty Yuan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+        
+      </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+          
+            <a href="/tags/js入门/" rel="tag"># js入门</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/01/1.2 闭包/" rel="next" title="1.2 引用数据类型赋值、闭包、内存释放">
+                <i class="fa fa-chevron-left"></i> 1.2 引用数据类型赋值、闭包、内存释放
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/03/2.1 原型、call/" rel="prev" title="2.1 原型、call、apply、bind、继承(属性+方法)">
+                2.1 原型、call、apply、bind、继承(属性+方法) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTUwOS82MDc3"></div>
+    
+  </div>
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Monty Yuan" />
+          <p class="site-author-name" itemprop="name">Monty Yuan</p>
+           
+              <p class="site-description motion-element" itemprop="description">自律使我自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/monty086" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this的用法（函数中）"><span class="nav-number">2.</span> <span class="nav-text">this的用法（函数中）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#两种方法（判断this）："><span class="nav-number">2.1.</span> <span class="nav-text">两种方法（判断this）：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单例模式"><span class="nav-number">3.</span> <span class="nav-text">单例模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数（类）"><span class="nav-number">4.</span> <span class="nav-text">构造函数（类）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型模式"><span class="nav-number">5.</span> <span class="nav-text">原型模式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Monty Yuan</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<a href="https://github.com/monty086">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://p1.bqimg.com/1949/5cea3a396d4ba8fc.png">
+</a>
+</body>
+</html>

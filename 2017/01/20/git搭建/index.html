@@ -1,0 +1,955 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javaScript,git安装," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="http://p1.bpimg.com/567571/b01abce46db6f4bc.png?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="hexo博客搭建
+今天闲下来想把之前安装hexo博客和换了电脑之后、或则工作中有两台电脑的话，实现一台电脑上传和同步功能，另一台电脑也能够上传和同步功能，这些功能重新再记录一下
+
+搭建本地环境安装git
+
+git官方下载地址：http://git-scm.com/download/
+注意安装的时候选择第三项全部适应，其他都是next在Select Components界面，点选Simple con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git搭建博客">
+<meta property="og:url" content="http://yoursite.com/2017/01/20/git搭建/index.html">
+<meta property="og:site_name" content="长白小蒙">
+<meta property="og:description" content="hexo博客搭建
+今天闲下来想把之前安装hexo博客和换了电脑之后、或则工作中有两台电脑的话，实现一台电脑上传和同步功能，另一台电脑也能够上传和同步功能，这些功能重新再记录一下
+
+搭建本地环境安装git
+
+git官方下载地址：http://git-scm.com/download/
+注意安装的时候选择第三项全部适应，其他都是next在Select Components界面，点选Simple con">
+<meta property="og:image" content="http://img2.ph.126.net/7R-Cw5cIP1E05bh4_w8JAA==/6632409169885198439.png">
+<meta property="og:image" content="http://img2.ph.126.net/c4EOQn4dkXN2g--XazHrlQ==/6632305815792182231.png">
+<meta property="og:updated_time" content="2017-04-27T16:08:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git搭建博客">
+<meta name="twitter:description" content="hexo博客搭建
+今天闲下来想把之前安装hexo博客和换了电脑之后、或则工作中有两台电脑的话，实现一台电脑上传和同步功能，另一台电脑也能够上传和同步功能，这些功能重新再记录一下
+
+搭建本地环境安装git
+
+git官方下载地址：http://git-scm.com/download/
+注意安装的时候选择第三项全部适应，其他都是next在Select Components界面，点选Simple con">
+<meta name="twitter:image" content="http://img2.ph.126.net/7R-Cw5cIP1E05bh4_w8JAA==/6632409169885198439.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/20/git搭建/"/>
+
+
+
+
+
+  <title> Git搭建博客 | 长白小蒙 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?f18e399141f4b0b08f3dfbe6d7bb305a";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">长白小蒙</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resume">
+          <a href="/resume" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-file-text"></i> <br />
+            
+            简历
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'iydvVsUw37-P7nQ_DTcf','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-tags " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/20/git搭建/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Monty Yuan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="长白小蒙">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="长白小蒙" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Git搭建博客
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-20T00:00:00+08:00">
+                2017-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="hexo博客搭建"><a href="#hexo博客搭建" class="headerlink" title="hexo博客搭建"></a>hexo博客搭建</h3><blockquote>
+<p>今天闲下来想把之前安装hexo博客和换了电脑之后、或则工作中有两台电脑的话，实现一台电脑上传和同步功能，另一台电脑也能够上传和同步功能，这些功能重新再记录一下</p>
+</blockquote>
+<h3 id="搭建本地环境"><a href="#搭建本地环境" class="headerlink" title="搭建本地环境"></a>搭建本地环境</h3><p><strong>安装git</strong></p>
+<ul>
+<li>git官方下载地址：<a href="http://git-scm.com/download/" target="_blank" rel="external">http://git-scm.com/download/</a></li>
+<li><code>注意安装的时候选择第三项全部适应，其他都是next</code>在Select Components界面，点选Simple context menu</li>
+<li>安装完成后，可以<code>git version</code>返回任何版本都代表安装成功</li>
+</ul>
+<p><strong>安装node</strong></p>
+<ul>
+<li>Node.js官方下载地址：<a href="https://nodejs.org/" target="_blank" rel="external">https://nodejs.org/</a> </li>
+<li>同样一路next</li>
+<li>安装完成后：全局命令符cmd中输入 <code>code -v</code>可以查看node版本</li>
+</ul>
+<p><strong>安装hexo</strong></p>
+<ul>
+<li>全局命令符中输入npm -install hexo -g   这个是代表在利用npm管理工具<strong>全局安装hexo</strong>文件</li>
+<li>查看安装情况： npm  install  安装依赖包；如果有安装可以查看安装的情况</li>
+<li>npm install hexo-deployer-git -save  在本地安装一个npm开发的插件，使用hexo d来部署到git上</li>
+</ul>
+<p><strong>创建本地仓库</strong></p>
+<ul>
+<li>随便创建一个文件夹，hexo init 即会在目标文件夹建立网站所需要的所有文件</li>
+<li>开启服务器：hexo s </li>
+<li>然后就可以在浏览器输入localhost:4000或者127.0.0.1：4000，可以打开博客的主页</li>
+<li>设置user.name和user.email。<code>git config --global user.name</code> “你的GitHub用户名” g<code>it config --global user.email</code> “你的GitHub注册邮箱”</li>
+</ul>
+<hr>
+<p><strong>创建ssh（公钥和密钥）</strong>可以免输入账号和密码  <code>如果只是测试学习可以不用设置</code></p>
+<ul>
+<li>检查是否安装过ssh：<code>ls -al ~/.ssh</code>如果安装过可以$ cd ~/.ssh 或cd .ssh；ls查看所以内容：window：C：Users\Adminstrator.ssh ;mac的位置：</li>
+<li>打开git bash，在用户主目录下运行：<code>ssh-keygen -t rsa -C&quot;youremail@example.com&quot;</code> 把其中的邮件地址换成自己的邮件地址，然后一路回车</li>
+<li>最后完成后，会在用户主目录下生成.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH key密钥对，id_rsa是私钥，千万不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。</li>
+<li>登陆GitHub，打开「Settings」-&gt;「SSH and GPG keys」，然后点击「new SSH key」，填上任意自定义Title，在Key文本框里粘贴公钥id_rsa.pub文件的全部内容（千万不要粘贴成私钥了！），最后点击「Add SSH Key」，你就应该看到已经添加的Key。</li>
+<li>检查一下是否安装好了：<code>ssh -T git@github.com</code>然后你输入yes，然后出现hello，用户名表示安装成功</li>
+<li>在终端里输入命令：<code>git config --global user.name &quot;username&quot;``git config --global user.email &quot;email&quot;</code>之前设置过就不用设置了</li>
+</ul>
+<p>如果添加了以后还需要在这里应用ssh</p>
+<p><img src="http://img2.ph.126.net/7R-Cw5cIP1E05bh4_w8JAA==/6632409169885198439.png" alt="Alt text"><br>如果你之前用的是https，那么你就用不了ssh<br>因为你用的是<code>https</code>而不是ssh。<br>你可以更新一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">origin</div><div class="line">git remote remove origin</div><div class="line">git remote add origin git@github.com:Username/Your_Repo_Name.git</div></pre></td></tr></table></figure></p>
+<p>之后你还需要重新设置track branch，比如：<br><code>git branch --set-upstream-to=origin/master master</code><br>对于HTTPS方式，你可以在~/.netrc文件里设定用户名密码，不过这样的风险在于密码是明文存放在这个文件里的，比较容易泄露<br>machine github.com<br>login Username<br>password Password<br>找到window的 变量环境  ：本地的系统属性–》高级–》环境变量–》根据图添加一个就行<br><img src="http://img2.ph.126.net/c4EOQn4dkXN2g--XazHrlQ==/6632305815792182231.png" alt="Alt text"></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C "xxxxxx@yy.com"  #建议填写自己真实有效的邮箱地址</div><div class="line">Generating public/private rsa key pair.</div><div class="line">Enter file <span class="keyword">in</span> which to save the key (/c/Users/xxxx_000/.ssh/id_rsa):   #不填直接回车</div><div class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):   #输入密码（可以为空）</div><div class="line">Enter same passphrase again:   #再次确认密码（可以为空）</div><div class="line">Your identification has been saved <span class="keyword">in</span> /c/Users/xxxx_000/.ssh/id_rsa.   #生成的密钥</div><div class="line">Your public key has been saved <span class="keyword">in</span> /c/Users/xxxx_000/.ssh/id_rsa.pub.  #生成的公钥</div><div class="line">The key fingerprint is:</div><div class="line"><span class="function">e3:51:33:<span class="title">xx:xx</span>:<span class="title">xx:xx</span>:<span class="title">xxx</span>:61:28:83:<span class="title">e2</span>:81 <span class="title">xxxxxx</span>@<span class="title">yy.com</span></span></div><div class="line">*本机已完成<span class="title">ssh</span> <span class="title">key</span>设置，其存放路径为：<span class="title">c</span>:/<span class="title">Users</span>/<span class="title">xxxx_000</span>/.<span class="title">ssh</span>/下。</div><div class="line">注释：可生成<span class="title">ssh</span> <span class="title">key</span>自定义名称的密钥，默认<span class="title">id_rsa</span>。</div><div class="line">$ <span class="title">ssh</span>-<span class="title">keygen</span> -<span class="title">t</span> <span class="title">rsa</span> -<span class="title">C</span> "邮箱地址" -<span class="title">f</span> ~/.<span class="title">ssh</span>/<span class="title">githug_blog_keys</span> #生成<span class="title">ssh</span> <span class="title">key</span>的名称为<span class="title">githug_blog_keys</span>，慎用容易出现其它异常。</div></pre></td></tr></table></figure>
+<h3 id="搭建github远程仓库环境"><a href="#搭建github远程仓库环境" class="headerlink" title="搭建github远程仓库环境"></a>搭建github远程仓库环境</h3><p><strong>搭建远程仓库</strong></p>
+<ul>
+<li>注册github官网的账户姓名<a href="https://github.com/" target="_blank" rel="external">https://github.com/</a></li>
+<li>然后然后点击➕号repository；仓库名应该为：<code>用户名.github.io</code></li>
+</ul>
+<p><strong>调试博客主题</strong></p>
+<ul>
+<li>到<code>hexo.io</code>网站下，然后点击theme  点击主题名，到达github主题的 页面，拉下面有一个install 下面的网址，</li>
+<li>在本地博客的命令行输入 ：git clone 下面的地址 下载主题下载下来</li>
+<li>或者直接按照提示安装<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">next主题</a></li>
+<li>在webstom根目录下的<code>config.yml</code>下面吧theme下面的主题更改成 自己安装后的主题名称。然后就会在本地显示了，然后再命令符跟新<code>hexo g</code> 生成静态页面</li>
+<li>编辑根目录下的_config.yml文件 分别输入：<code>type:git</code> ;<code>repository: 仓库的地址</code>；<code>branch：master</code>；<code>theme：next</code></li>
+<li>然后再到浏览器刷新网页：（github用户名）.github.io ;</li>
+<li>如果能打开，博客基本就搭建好了。</li>
+</ul>
+<p><strong>配置主题</strong></p>
+<ul>
+<li>先配置主题的根目录</li>
+<li>优化主题的内容</li>
+<li>比如我跟新完文章之后我就会 <code>hexo  d -g</code>发布上去</li>
+</ul>
+<p>单电脑搭建完成</p>
+<hr>
+<h3 id="双电脑实现操作"><a href="#双电脑实现操作" class="headerlink" title="双电脑实现操作"></a>双电脑实现操作</h3><ul>
+<li>如果写的博客不希望别人看见，那么就需要创建一个新的私有仓库，写博客用   有推荐的比如 github（收费）、gitcafe（收费）、bitbucket、oschina、coding、<a href="code.aliyun.com">阿里云</a> </li>
+<li>我用的是阿里云</li>
+<li>我们需要把博客的操作内容，就是makedown文件和一些配置的文件，经常变动的文件上传到私有的仓库，这样别人就看不到了，还有就是只需要上传这些文件（不必全部文件都上传）</li>
+<li>这里我需要需要用一个文件<code>.gitignore</code>（忽略文件）忽略文件里面要把不上传的文件都放到这个文件里，如果是mac的话，直接终端创建一个touch .gitignore  然后编辑文件 vim .gitignore 在文件里面输入忽略的文件，如果是win的话，直接创建一个txt文件，名字另存为.gitignore即可</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.DS_Store      </div><div class="line">Thumbs.db      </div><div class="line">db.json      </div><div class="line">*.log      </div><div class="line">node_modules/      //然后是文件夹node_modules（在用npm install会重新生成）</div><div class="line">public/      //public内的文件可以根据source文件夹内容自动生成的，不需要备份</div><div class="line">.deploy*/     //.deploy_git是hexo默认的.git配置文件夹，不需要同步</div><div class="line">.git          //首先是.git文件，无论是在站点根目录下，还是主题目录下的.git文件，都可以删掉。</div><div class="line">.deploy_git    //.deploy_git文件夹（在使用hexo d时也会重新生成）</div></pre></td></tr></table></figure>
+<ul>
+<li>然后大写的z连续按2次退出即可</li>
+<li>把这个文件放入要上传到私有仓库的文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">git init      //让这个本地文件变成一个git仓库，如果设置过忽略这一步 </div><div class="line">git remote add origin &lt;server&gt;    //server是安装私有仓库的地址，意思是在远程的仓库中映射到本地的仓库分支origin</div><div class="line">git add .     #添加blog目录下所有文件，注意有个&apos;.&apos;(.gitignore里面声明的文件不在此内)    </div><div class="line">git commit -m &quot;hexo source first add&quot;     #添加更新说明  写什么都行</div><div class="line">git push -u origin master     #推送更新到git上  写不写-u都可以</div></pre></td></tr></table></figure>
+<ul>
+<li>这个时候远程的仓库已经上传成功</li>
+<li>这个时候，我换了一台电脑，我的pc，因为想在pc上也能同步我的博客内容，所以我现在需要在pc上先搭建本地的环境，可以按照我最开始写的来安装，安装完成后，在pc上会有一个hexo的初始</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git init    #将目录添加到版本控制系统中   如果有了就忽略 </div><div class="line">git remote add origin &lt;server&gt;    #同上    私有仓库地址</div><div class="line">git fetch --all    #将git上所有文件拉取到本地    </div><div class="line">git reset --hard origin/master    #强制将刚刚同步git云端内容覆盖本地的初始内容</div></pre></td></tr></table></figure>
+<ul>
+<li>至此，下载文件以及完成，现在呢有一个逻辑，就是 mac在家，pc在公司，mac在家跟新了博客，然后也push到私有仓库了新的内荣，然后我pc在公司，就开始往下拉，（记住要也设置忽略文件，不然你提交到云端的话，就会乱套）然后再编辑，再上传到私有仓库，形成循环</li>
+<li>在我新内容往下pull的时候报了一个错<code>commit your changes or stash them before you can merge.</code>我采取的操作是放弃本地修改直接覆盖：<code>git reset --hard</code>  ；<code>git pull</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">然后在在公司写完后上传到私有云	</div><div class="line">git add . #将所有更新的本地文件添加到版本控制系统中</div><div class="line">git commit -m &apos;更新信息说明&apos;   </div><div class="line">git push</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">回到家直接</div><div class="line">git pull</div></pre></td></tr></table></figure>
+<ul>
+<li>在开始往上push上传的时候，发现主题上传不上，果断把主题下的.git文件删除后，上传成功了，其实每个文件上.git都可以删除，这个文件只是你文件的一些操作可以ls查看当前文件的隐藏文件，然后<code>ls -al</code>可以查看当前文件下面的内容，然后<code>rm -rf .git</code></li>
+<li>error： deployer not found :git  如果是这个报错，说明git 开发模块没有安装执行<code>npm install hexo-deployer-git –save</code></li>
+</ul>
+<blockquote>
+<p><strong>注意事项:</strong><br><strong>hexo deploy没有反应？</strong>  修改配置文件：_config.yml时，冒号后面没加空格。<br><strong>如何换主题？</strong>将主题下载后，放到themes文件夹中即可。例如，下面命令安装next主题：git clone <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">https://github.com/iissnan/hexo-theme-next</a> themes/next。<br>在git bash中切换目录到新拷贝的文件夹里，使用 npm install 命令，进行模块安装。很明显我们这里没用hexo init初始化，因为有的文件我们已经拷贝生成过来了，所以不必用hexo init去整体初始化，如果不慎在此时用了hexo init，则站点的配置文件_config.yml里面内容会被清空使用默认值，所以这一步一定要慎重，不要用hexo init。<br><code>npm install hexo-generator-sitemap --save</code>为了建立站点地图，需要安装</p>
+</blockquote>
+<h3 id="hexo-命令符"><a href="#hexo-命令符" class="headerlink" title="hexo 命令符"></a>hexo 命令符</h3><p>hexo deploy 部署<br>hexo generate 生成静态页面<br>hexo clean 清空静态页面<br>hexo server 开启服务<br>hexo clean &amp;&amp; hexo g -s  清除、生成、启动<br>hexo clean &amp;&amp; hexo g -d  清除、生成、部署<br>hexo new “文章标题名”<br>hexo new page “tags” 创建一个文件夹，文件夹里有一个index文件。里面type ：“tags”</p>
+<h3 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h3><p><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">hexo官方文档</a><br><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">NexT主题官方文档</a><br><a href="https://www.zhihu.com/question/29017171" target="_blank" rel="external">hexo 下的分类和表签无法显示，怎么解决？</a><br><a href="http://www.jianshu.com/p/f4cc5866946b" target="_blank" rel="external">手把手教从零开始在GitHub上使用Hexo搭建博客教程(一)</a><br><a href="https://segmentfault.com/q/1010000004593371" target="_blank" rel="external">Github上搭建Hexo如何跨电脑写作部署方便？</a><br><a href="http://blog.bigruan.com/2015-03-09-Continuous-Integration-Your-Hexo-Blog-With-TravisCI/" target="_blank" rel="external">Continuous Integration Your Hexo Blog With Travis CI</a><br><a href="http://www.jianshu.com/p/1d427e888dda" target="_blank" rel="external">【Hexo+Github】域名和github绑定的问题</a><br><a href="http://www.jianshu.com/p/3cb4c9ff5b58" target="_blank" rel="external">万网域名+GitHub平台搭建的博客</a><br><a href="1.%20%20http://codepub.cn/2015/04/06/Github-Pages-personal-blog-from-Octopress-to-Hexo/#comments">hexo搭建过程</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+
+      <div align="center">
+        
+          <div class="copyright">
+          <p><span>
+          <b>本文地址：</b><a href="/2017/01/20/git搭建/" title="Git搭建博客">http://yoursite.com/2017/01/20/git搭建/</a><br/><b>转载请注明出处，谢谢啊！</b>
+          </span></p>
+          </div>
+        
+      </div>
+
+      <div>
+        
+          
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat.jpg" alt="Monty Yuan WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+        
+      </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javaScript/" rel="tag"># javaScript</a>
+          
+            <a href="/tags/git安装/" rel="tag"># git安装</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/08/2.4 正则/" rel="next" title="2.4 正则表达式：元字符、作用、分组、Replace">
+                <i class="fa fa-chevron-left"></i> 2.4 正则表达式：元字符、作用、分组、Replace
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/20/标签/" rel="prev" title="Tagcloud">
+                Tagcloud <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTUwOS82MDc3"></div>
+    
+  </div>
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Monty Yuan" />
+          <p class="site-author-name" itemprop="name">Monty Yuan</p>
+           
+              <p class="site-description motion-element" itemprop="description">自律使我自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/monty086" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo博客搭建"><span class="nav-number">1.</span> <span class="nav-text">hexo博客搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建本地环境"><span class="nav-number">2.</span> <span class="nav-text">搭建本地环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搭建github远程仓库环境"><span class="nav-number">3.</span> <span class="nav-text">搭建github远程仓库环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双电脑实现操作"><span class="nav-number">4.</span> <span class="nav-text">双电脑实现操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo-命令符"><span class="nav-number">5.</span> <span class="nav-text">hexo 命令符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考博客"><span class="nav-number">6.</span> <span class="nav-text">参考博客</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Monty Yuan</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<a href="https://github.com/monty086">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="http://p1.bqimg.com/1949/5cea3a396d4ba8fc.png">
+</a>
+</body>
+</html>
